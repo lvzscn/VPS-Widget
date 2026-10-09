@@ -96,7 +96,7 @@ async function run() {
   // 11. /api/widget-info（含10模块 + baseUrl 用请求 host）
   r = fakeRes(); await index(fakeReq("/api/widget-info?__path=/api/widget-info", "GET", null, AUTH, ), r);
   const w = JSON.parse(r.body);
-  assert.ok(w.code.includes("loadTrakt") && w.code.includes("loadGuduo") && w.code.includes("sortItems"));
+  assert.ok(w.code.includes("loadAniList") && w.code.includes("loadGuduo") && w.code.includes("sortItems"));
   assert.ok(w.url.startsWith("https://demo.example"));
 
   // 12. 公开数据端点 api/data.js
@@ -106,7 +106,7 @@ async function run() {
 
   // 13. 公开 widget api/widget.js
   r = fakeRes(); await wjs(fakeReq("/widget.js", "GET", null, { host: "demo.example" }), r);
-  assert.equal(r.status, 200); assert.ok(r.body.includes("loadTrakt"));
+  assert.equal(r.status, 200); assert.ok(r.body.includes("loadAniList"));
 
   // 14. 改密码
   r = fakeRes(); await index(fakeReq("/api/password?__path=/api/password", "POST", { oldPassword: "admin", newPassword: "newpass123" }, AUTH), r);
