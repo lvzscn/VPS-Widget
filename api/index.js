@@ -134,7 +134,7 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 200, { source: name, last_updated: (data && data.last_updated) || "", count: data ? reg.countOf(name, data) : 0, data });
   }
 
-  if (p === "/api/widget" && req.method === "GET") {
+  if (p === "/api/widget-info" && req.method === "GET") {
     const base = (cfg.vpsAddress || reg.siteUrl(req)).replace(/\/+$/, "");
     return sendJson(res, 200, {
       url: base + "/widget.js",
