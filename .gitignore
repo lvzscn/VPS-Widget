@@ -1,0 +1,4 @@
+# Vercel 本地
+node_modules/
+.vercel/
+.env
