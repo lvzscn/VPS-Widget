@@ -93,8 +93,8 @@ async function run() {
   r = fakeRes(); await index(fakeReq("/api/preview?__path=/api/preview&source=bangumi", "GET", null, AUTH), r);
   assert.equal(JSON.parse(r.body).count, 2);
 
-  // 11. /api/widget（含10模块 + baseUrl 用请求 host）
-  r = fakeRes(); await index(fakeReq("/api/widget?__path=/api/widget", "GET", null, AUTH, ), r);
+  // 11. /api/widget-info（含10模块 + baseUrl 用请求 host）
+  r = fakeRes(); await index(fakeReq("/api/widget-info?__path=/api/widget-info", "GET", null, AUTH, ), r);
   const w = JSON.parse(r.body);
   assert.ok(w.code.includes("loadTrakt") && w.code.includes("loadGuduo") && w.code.includes("sortItems"));
   assert.ok(w.url.startsWith("https://demo.example"));
