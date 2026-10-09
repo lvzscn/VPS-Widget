@@ -4,7 +4,7 @@ const reg = require("../lib/registry.js");
 
 module.exports = async function (req, res) {
   const url = new URL(req.url, "http://x");
-  const name = url.searchParams.get("src") || "";
+  const name = (url.searchParams.get("src") || "").replace(/\.json$/, "");
   if (!reg.sources[name]) {
     res.statusCode = 404;
     res.setHeader("Content-Type", "application/json; charset=utf-8");
