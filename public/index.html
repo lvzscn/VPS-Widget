@@ -232,7 +232,7 @@ async function loadConfig(){
   $("#enable").checked=!!c.updateEnabled;
 }
 async function loadWidget(){
-  const w=await api("/api/widget");
+  const w=await api("/api/widget-info");
   let u=w.url||"–";
   // 若存的是默认 127.0.0.1/localhost，改用当前浏览器访问地址，保证复制出去可用
   if(/^https?:\/\/(127\.0\.0\.1|localhost)[:/]/.test(u) && location.origin){
@@ -288,7 +288,7 @@ $("#updateAll").onclick=async()=>{
   await loadSources(); await loadPreview();
 };
 $("#copy_w").onclick=async()=>{try{await copyText($("#w_url").textContent);msg("已复制模块地址");}catch{msg("复制失败，请手动复制上方地址",false);}};
-$("#show_code").onclick=async()=>{const w=await api("/api/widget");const el=$("#w_code");el.textContent=w.code||"";el.style.display=el.style.display==="none"?"block":"none";};
+$("#show_code").onclick=async()=>{const w=await api("/api/widget-info");const el=$("#w_code");el.textContent=w.code||"";el.style.display=el.style.display==="none"?"block":"none";};
 $("#srcSelect").onchange=loadPreview;
 $("#refreshPreview").onclick=loadPreview;
 
